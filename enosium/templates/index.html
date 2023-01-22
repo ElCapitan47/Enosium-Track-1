@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Repayment Predictor</title>
+    <script>
+        function submitForm() {
+          alert('Form submitting')
+          
+          var form= document.getElementById('form-submit');
+          form.submit();
+          
+        }
+    </script>
+    <style>
+          .header
+          {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               color: white;
+               font-family: Arial, Helvetica, sans-serif;
+               font-size: 35px;
+          }
+          .container
+          {
+               box-sizing: border-box;
+               background-image: url('https://wallpaperboat.com/wp-content/uploads/2021/04/15/75170/finance-14.jpg');
+               background-size: cover;
+               border: 2px solid black;
+               background-color: white;
+          }
+
+          .myform
+          {
+               background-image: url('https://img.freepik.com/premium-photo/financial-data-monitor-which-including-market-analyze-bar-graphs-diagrams-financial-figures-abstract-glowing-forex-chart-interface-wallpaper-investment-trade-stock-finance_372999-7660.jpg');
+               background-size: cover;
+               color: white; 
+               width: 60%;
+               margin: 50px;
+               margin-right: 100px;
+               margin-left: 200px;
+               padding-top: 50px;
+               padding-bottom: 50px;
+               padding-right: 0px;
+               padding-left: 150px;
+               background-color: whitesmoke;
+               border: 2px solid black;
+               border-radius: 1%;
+          }
+          .form-data
+          {
+               margin-top: 20px;
+               
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 10px;
+               font-family: Verdana, Geneva, Tahoma, sans-serif;
+               font-size: 25px;
+          }
+          .form-field
+          {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 10px;
+               font-family: Verdana, Geneva, Tahoma, sans-serif;
+               font-size: 20px;
+          }
+          .field
+          {
+               width: 80%;
+               height: 50px;
+               font-size: 20px;
+               border-radius: 10px;
+               border-bottom: 2px solid black;
+               border-top: none;
+               border-left: none;
+               border-right: none;
+          }
+          .radiotel
+          {
+               display: inline-block;
+               
+               font-family: Verdana, Geneva, Tahoma, sans-serif;
+          
+          
+          }
+          /*.Submit
+          {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding-right: 100px;
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          
+          }*/
+          .submit
+          { 
+               margin-top: 50px;
+               padding: 8px;
+               font-size: 30px;
+               border-radius: 5px;
+               background-color: green;
+               color: white;
+          
+          }
+          /*.Reset
+          {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding-right: 100px;
+          display: flex;
+          justify-content: right;
+          align-items: center;
+          }*/
+          .reset
+          {
+               margin-top: 50px;
+               padding: 8px;
+               font-size: 30px;
+               border-radius: 5px;
+               background-color: royalblue;
+               color: white;
+          }
+          .Button
+          {
+          
+               display: flex;
+               justify-content: space-around;
+               align-items: flex-start;
+               margin-right: 200px;
+          }
+          .pro
+          {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               font-size: 30px;
+          }
+          .verdict
+          {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               font-size: 100px;
+               font-family: Verdana, Geneva, Tahoma, sans-serif;
+               color: green;
+          }
+          .image
+          {
+               margin-left: 540px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+          }
+          .goback
+          {
+               margin-top: 20px;
+               margin-bottom: 20px;
+               padding-right: 100px;
+               display: flex;
+               justify-content: right;
+               align-items: center;
+          }
+          .btn
+          {
+               margin-left: 680px;
+               padding: 8px;
+               font-size: 30px;
+               border-radius: 5px;
+               background-color: green;
+               color: white;
+          }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class='header'>
+        <h1> LOAN REPAYMENT PREDICTOR</h1>
+    </div>
+    <div >
+        
+     <form class="myform" action="/predict" method="POST" >
+          
+          <div class='form-data'>
+               <label>Number of people who will provide maintenance</label>
+           </div>
+            <div class='form-field'>    
+               <input type='number'class='field' name='nop'min='0' required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Loan History</label>
+            </div>
+            <div class= 'form-field'>   
+               <select class='field' name='hist' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=1> Critical Account/ Multiple loans</option>
+                    <option value=3> Current Loans paid back duly </option>
+                    <option value=4> All previous loans duly cleared</option>
+                    <option value=2> Delay in paying off loans in past</option>
+                    <option value=5> No loans taken</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Purpose of taking loan</label>
+           </div>
+           <div class='form-field'>    
+               <input type='textarea' class='field' name='pup' required></input>
+               
+          </div>
+          
+          <div class='form-data'>
+               <label>Loan amount taken</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class="field" min='0' name='amo' required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Guarantor/Debtor</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='gud' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=2> None</option>
+                    <option value=1> Guarantor</option>
+                    <option value=3> Co-applicant</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Number of years of employment</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='noe'>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=3> Between 1-4 years</option>
+                    <option value=2> Greater than 4 years</option>
+                    <option value=1>Less than a year </option>
+                    <option value=0>Unemployed</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Marital status</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field'name='mas' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=0> Female and divorced/separated/widowed</option>
+                    <option value=1> Male and divorced/separated/widowed</option>
+                    <option value=2> Male and married/widowed</option>
+                    <option value=3> Male and single</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Number of loans taken from current bank</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class='field' min='0' name='loab' required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Age of applicant (in yrs)</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class='field' name='ageee' min='0'required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Amount in current account</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='curr' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=0> None</option>
+                    <option value=1> Less than 0</option>
+                    <option value=2>Between 0 and 200 </option>
+                    <option value=3> Greater than 200</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Amount in savings account</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='sav' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=0> None</option>
+                    <option value=1> Less than 100</option>
+                    <option value=2>Between 100 and 500 </option>
+                    <option value=3>Between 500 and 1000 </option>
+                    <option value=4> Greater than 1000</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>% income paid as installment</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class='field' min='0' name='inc' required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Other loan plans taken</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='olp' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=1> None</option>
+                    <option value=0> Bank</option>
+                    <option value=2> Stores</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Working Abroad</label>
+          </div>
+          <div class='form-field'>     
+               <select name="working-abroad" class='field' name='wa' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=1> Yes</option>
+                    <option value=0> No</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Telephone number availability</label>
+          </div>
+          <div class='form-field'>  
+               <select  name="telephone" name='tel' class='field' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=1> Yes</option>
+                    <option value=0> No</option>
+               </select>   
+               
+          </div>
+          <div class='form-data'>
+               <label>Time duration for loan (in months)</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class='field' name='tdd' min='0'required></input>
+               
+          </div>
+          <div class='form-data'>
+               <label>Owned Property</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='op' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=3> Real Estate</option>
+                    <option value=2> Building Society Savings Agreement</option>
+                    <option value=1> Car or Other Property</option>
+                    <option value=0> No Property</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Type Of Job Performed</label>
+          </div>
+          <div class='form-field'>     
+               <select class='field' name='jp' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=2> Skilled Employee/Official</option>
+                    <option value=0> Unskilled Resident</option>
+                    <option value=1> Unskilled Non-Resident</option>
+                    <option value=3> Management/ Self-employed/Highly qualified employee/ Officer</option>
+               </select>
+               
+          </div>
+          <div class='form-data'>
+               <label>Type Of Housing</label>
+          </div>
+          <div class='form-field'>   
+               <select name="housing" name='tho' class='field' required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value=1> Owner</option>
+                    <option value=2> Rent</option>
+                    <option value=0> For Free</option>
+               </select>
+          </div>
+          <div class='form-data'>
+               <label>Number of years of stay at current address</label>
+          </div>
+          <div class='form-field'>     
+               <input type="number"class='field' name='noy' min='0'required></input>
+               
+          </div>
+          <div class="Button">
+               <div class= 'Submit'>
+                    <input type='submit' class='submit' value='Submit' >
+          
+                  </div>
+                  <div class= 'Reset'>
+                       <input type='reset' class='reset' value='Clear'/>
+             
+                  </div>
+          </div>
+          
+          
+        </form>
+    </div>
+  </div>
+</body>
+</html>
